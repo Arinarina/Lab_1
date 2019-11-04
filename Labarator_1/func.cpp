@@ -5,7 +5,7 @@
 #include <conio.h> 
 
 #include <stdio.h> 
-
+#define N 10
 using namespace std;
 
 void copy(char* a, char* b)
@@ -52,8 +52,8 @@ void sort(worker obj[])
 {
 	char empty[] = " ";
 	worker temp;
-	for (int i = 0; i < 10 - 1; i++)
-		for (int j = i + 1; j < 10; j++)
+	for (int i = 0; i < N - 1; i++)
+		for (int j = i + 1; j < N; j++)
 			if ((strcmp(obj[i].take_fio(), obj[j].take_fio()) > 0) && (strcmp(obj[i].take_fio(), empty) != 0) && (strcmp(obj[j].take_fio(), empty) != 0))
 			{
 				temp = obj[i];
@@ -63,7 +63,7 @@ void sort(worker obj[])
 }
 
 
-bool test(char* str)
+bool test_stroka(char* str)
 {
 	while (*str != '\0')
 	{

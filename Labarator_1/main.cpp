@@ -1,17 +1,17 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <stdlib.h> 
 #include <conio.h> 
 #include <string.h> 
 #include <stdio.h> 
 #include "worker.h" 
 #include "func.h" 
-
+#define N 10
 using namespace std;
 
 int main()
 {
 
-	worker rab[10];
+	worker rabotnik[10];
 	setlocale(LC_ALL, "rus");
 	int i = 0;
 	int  note;
@@ -21,13 +21,13 @@ int main()
 	{
 		while (1)
 		{
-			cout << "1 - Ââîä äàííûõ\n2 - Ïîêàçàòü âñå äàííûå â àëôàâèòíîì ïîðÿäêå \n3 - Ïîèñê ïî çàäàíèþ\n4 - Èçìåíèòü äàííûå\n5 - Âûõîä\n\n";
+			cout << "1 - Ð’Ð²Ð¾Ð´ Ð´Ð°Ð½Ð½Ñ‹Ñ…\n2 - ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ Ð²ÑÐµ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð² Ð°Ð»Ñ„Ð°Ð²Ð¸Ñ‚Ð½Ð¾Ð¼ Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ \n3 - ÐŸÐ¾Ð¸ÑÐº Ð¿Ð¾ Ð·Ð°Ð´Ð°Ð½Ð¸ÑŽ\n4 - Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð´Ð°Ð½Ð½Ñ‹Ðµ\n5 - Ð’Ñ‹Ñ…Ð¾Ð´\n\n";
 
-			cout << "Ââåäèòå íîìåð:\n";
+			cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€:\n";
 			cin >> num;
 			if (num > 5 || num < 1)
 			{
-				cout << "\nÍåêêîðåêòíî ââåäåíû äàííûå!Äëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+				cout << "\nÐÐµÐºÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð¾ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ðµ!Ð”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 				_getch();
 				system("cls");
 				continue;
@@ -38,63 +38,63 @@ int main()
 		switch (num)
 		{
 		case 1: system("cls");
-			for (int i = 0; i < 10; i++)
+			for (int i = 0; i < N; i++)
 			{
 				while (1)
 				{
 					system("cls");
-					cin >> rab[i];
+					cin >> rabotnik[i];
 					try
 					{
-						for (int j = 0; j < 10; j++)
+						for (int j = 0; j < N; j++)
 						{
-							if ((rab[i].take_fio() == rab[j].take_fio()) && i != j)
+							if ((rabotnik[i].take_fio() == rabotnik[j].take_fio()) && i != j)
 								throw 7;
 						}
 					}
 
 					catch (int p)
 					{
-						cout << "Îøèáêà. Äàííûé ðàáîòíèê óæå ñóùåñòâóåò â áàçå.\n";
-						cout << "\nÄëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+						cout << "ÐžÑˆÐ¸Ð±ÐºÐ°. Ð”Ð°Ð½Ð½Ñ‹Ð¹ Ñ€Ð°Ð±Ð¾Ñ‚Ð½Ð¸Ðº ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð² Ð±Ð°Ð·Ðµ.\n";
+						cout << "\nÐ”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 						_getch();
 						continue;
 					}
 					break;
 				}
 			}
-			cout << "\nÄëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+			cout << "\nÐ”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 			_getch();
 			system("cls");
 			break;
 
 		case 2: system("cls");
-			sort(rab);
-			disp(rab);
-			cout << "\nÄëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+			sort(rabotnik);
+			disp(rabotnik);
+			cout << "\nÐ”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 			_getch();
 			system("cls");
 			break;
 
 		case 3: system("cls");
-			sort(rab);
-			search(rab);
-			cout << "\nÄëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+			sort(rabotnik);
+			search(rabotnik);
+			cout << "\nÐ”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 			_getch();
 			system("cls");
 			break;
 
 		case 4: system("cls");
-			sort(rab);
+			sort(rabotnik);
 
 			while (1)
 			{
-				disp(rab);
-				cout << "Ââåäèòå íîìåð ðåäàêòèðóåìîé çàïèñè:\n";
+				disp(rabotnik);
+				cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÐ¼Ð¾Ð¹ Ð·Ð°Ð¿Ð¸ÑÐ¸:\n";
 				cin >> note;
-				if (note > 10 || note < 1)
+				if (note > N || note < 1)
 				{
-					cout << "\nÍåêêîðåêòíî ââåäåíû äàííûå!Äëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+					cout << "\nÐÐµÐºÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð¾ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ðµ!Ð”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 					_getch();
 					system("cls");
 					continue;
@@ -106,33 +106,33 @@ int main()
 			while (1)
 			{
 				system("cls");
-				cin >> rab[note - 1];
+				cin >> rabotnik[note - 1];
 				try
 				{
-					for (int j = 0; j < 10; j++)
+					for (int j = 0; j < N; j++)
 					{
-						if ((rab[note - 1].take_fio() == rab[j].take_fio()) && ((note - 1) != j))
+						if ((rabotnik[note - 1].take_fio() == rabotnik[j].take_fio()) && ((note - 1) != j))
 							throw 7;
 					}
 				}
 
 				catch (int p)
 				{
-					cout << "Îøèáêà. Äàííûé ðàáîòíèê óæå ñóùåñòâóåò â áàçå.\n";
-					cout << "\nÄëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+					cout << "ÐžÑˆÐ¸Ð±ÐºÐ°. Ð”Ð°Ð½Ð½Ñ‹Ð¹ Ñ€Ð°Ð±Ð¾Ñ‚Ð½Ð¸Ðº ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð² Ð±Ð°Ð·Ðµ.\n";
+					cout << "\nÐ”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 					_getch();
 					continue;
 				}
 				break;
 			}
-			cout << "\nÄëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+			cout << "\nÐ”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 			_getch();
 			system("cls");
 			break;
 
 		case 5:
 
-			cout << "Äî ñâèäàíèÿ!\n";
+			cout << "Ð”Ð¾ ÑÐ²Ð¸Ð´Ð°Ð½Ð¸Ñ!\n";
 			return 0;
 			break;
 		}

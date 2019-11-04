@@ -15,5 +15,5 @@ bool chislo(char p);
 
 bool test_number(char* str);
 
-bool test(char* str);
+bool test_stroka(char* str);
 

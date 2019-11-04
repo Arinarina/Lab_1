@@ -1,10 +1,12 @@
-#include "worker.h"
+ï»¿#include "worker.h"
 
 #include <stdlib.h> 
 
 #include <conio.h> 
 
 #include <stdio.h> 
+
+#define N 10
 
 using namespace std;
 
@@ -61,7 +63,7 @@ void worker::get_fio(void)
 
 {
 
-	cout << "Ôàìèëèÿ è èíèöèàëû: " << fio << "\n";
+	cout << "Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ Ð¸ Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ñ‹: " << fio << "\n";
 
 	return;
 
@@ -71,7 +73,7 @@ void worker::get_position(void)
 
 {
 
-	cout << "Çàíèìàåìàÿ äîëæíîñòü: " << position << "\n";
+	cout << "Ð—Ð°Ð½Ð¸Ð¼Ð°ÐµÐ¼Ð°Ñ Ð´Ð¾Ð»Ð¶Ð½Ð¾ÑÑ‚ÑŒ: " << position << "\n";
 
 	return;
 
@@ -81,7 +83,7 @@ void worker::get_year(void)
 
 {
 
-	cout << "Ãîä ïîñòóïëåíèÿ íà ðàáîòó: " << year << "\n";
+	cout << "Ð“Ð¾Ð´ Ð¿Ð¾ÑÑ‚ÑƒÐ¿Ð»ÐµÐ½Ð¸Ñ Ð½Ð° Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ: " << year << "\n";
 
 	return;
 
@@ -130,18 +132,18 @@ istream& operator>>(istream& stream, worker& obj)
 	char str[100];
 	int data_year;
 
-	//cout << "Ââåäèòå ôàìèëèþ è èíèöèàëû:\n";
+	//cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ„Ð°Ð¼Ð¸Ð»Ð¸ÑŽ Ð¸ Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ñ‹:\n";
 	gets_s(str1);
 	obj.set_fio(str1);
 	while (1)
 	{
-		cout << "Ââåäèòå ôàìèëèþ è èíèöèàëû:\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ„Ð°Ð¼Ð¸Ð»Ð¸ÑŽ Ð¸ Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ñ‹:\n";
 		gets_s(str);
 
 
-		if (test(str) == false)
+		if (test_stroka(str) == false)
 		{
-			cout << "\nÍåêêîðåêòíî ââåäåíû äàííûå!Äëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+			cout << "\nÐÐµÐºÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð¾ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ðµ!Ð”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 			_getch();
 			system("cls");
 			continue;
@@ -155,13 +157,13 @@ istream& operator>>(istream& stream, worker& obj)
 
 	while (1)
 	{
-		cout << "Ââåäèòå çàíèìàåìóþ äîëæíîñòü:\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð°Ð½Ð¸Ð¼Ð°ÐµÐ¼ÑƒÑŽ Ð´Ð¾Ð»Ð¶Ð½Ð¾ÑÑ‚ÑŒ:\n";
 		gets_s(str);
 
 
-		if (test(str) == false)
+		if (test_stroka(str) == false)
 		{
-			cout << "\nÍåêêîðåêòíî ââåäåíû äàííûå!Äëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+			cout << "\nÐÐµÐºÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð¾ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ðµ!Ð”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 			_getch();
 			system("cls");
 			continue;
@@ -173,12 +175,12 @@ istream& operator>>(istream& stream, worker& obj)
 
 	while (1)
 	{
-		cout << "Ââåäèòå ãîä ïîñòóïëåíèÿ íà ðàáîòó:\n";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð³Ð¾Ð´ Ð¿Ð¾ÑÑ‚ÑƒÐ¿Ð»ÐµÐ½Ð¸Ñ Ð½Ð° Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ:\n";
 		cin >> data_year;
 
 		if (data_year > 2020 || data_year < 1960)
 		{
-			cout << "\nÍåêêîðåêòíî ââåäåíû äàííûå!Äëÿ ïðîäîëæåíèÿ íàæìèòå ëþáóþ êíîïêó.\n";
+			cout << "\nÐÐµÐºÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð¾ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ðµ!Ð”Ð»Ñ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶ÐµÐ½Ð¸Ñ Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ½Ð¾Ð¿ÐºÑƒ.\n";
 			_getch();
 			system("cls");
 			continue;
@@ -276,8 +278,8 @@ worker::worker(char* data_fio, char* data_position, int data_year)
 void disp(worker obj[])
 {
 	int count = 1;
-	cout << "\t\t\t\tÂñÿ èíôîðìàöèÿ:\n\n";
-	for (int i = 0; i < 10; i++)
+	cout << "\t\t\t\tÐ’ÑÑ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ:\n\n";
+	for (int i = 0; i < N; i++)
 	{
 		if (*obj[i].take_fio() == ' ' && *obj[i].take_position() == ' ' && obj[i].take_year() == 0)
 			continue;
@@ -290,13 +292,13 @@ void disp(worker obj[])
 }
 void search(worker obj[]) {
 	int stag;
-	cout << "Ââåäèòå íåîáõîäèìûé ñòàæ ðàáîòû äëÿ ïîèñêà ñîòðóäíèêîâ: \n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ñ‹Ð¹ ÑÑ‚Ð°Ð¶ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð´Ð»Ñ Ð¿Ð¾Ð¸ÑÐºÐ° ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ¾Ð²: \n";
 	cin >> stag;
 
-	cout << "\t\t\t Ñîòðóäíèêè, ÷åé ñòàæ ðàáîòû íå ïðåâûøàåò " << stag << " ëåò (ãîäà) \n\n";
+	cout << "\t\t\t Ð¡Ð¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ¸, Ñ‡ÐµÐ¹ ÑÑ‚Ð°Ð¶ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð½Ðµ Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°ÐµÑ‚ " << stag << " Ð»ÐµÑ‚ (Ð³Ð¾Ð´Ð°) \n\n";
 	int i;
 	int flag = 0;
-	for (i = 0; i < 10; ++i) {
+	for (i = 0; i < N; ++i) {
 		if (stag >= (2020 - obj[i].take_year())) {
 			flag++;
 			cout << obj[i] << "\n\n";
@@ -304,7 +306,7 @@ void search(worker obj[]) {
 
 	}
 	if (flag == 0)
-		cout << "Íåò òàêèõ ðàáîòíèêîâ!\n";
+		cout << "ÐÐµÑ‚ Ñ‚Ð°ÐºÐ¸Ñ… Ñ€Ð°Ð±Ð¾Ñ‚Ð½Ð¸ÐºÐ¾Ð²!\n";
 	return;
 
 }
