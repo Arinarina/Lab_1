@@ -4,7 +4,7 @@
 #include <string.h> 
 #include <stdio.h> 
 #include "worker.h" 
-#include "func.h" 
+
 #define N 10
 using namespace std;
 
@@ -69,7 +69,7 @@ int main()
 			break;
 
 		case 2: system("cls");
-			sort(rabotnik);
+			//sort(rabotnik);
 			disp(rabotnik);
 			cout << "\nДля продолжения нажмите любую кнопку.\n";
 			_getch();
@@ -77,7 +77,7 @@ int main()
 			break;
 
 		case 3: system("cls");
-			sort(rabotnik);
+			//sort(rabotnik);
 			search(rabotnik);
 			cout << "\nДля продолжения нажмите любую кнопку.\n";
 			_getch();
@@ -85,7 +85,7 @@ int main()
 			break;
 
 		case 4: system("cls");
-			sort(rabotnik);
+			//sort(rabotnik);
 
 			while (1)
 			{

@@ -3,7 +3,7 @@
 #include <iostream> 
 #include <stdio.h> 
 #include <string> 
-#include "func.h" 
+ 
 
 using namespace std;
 
@@ -31,6 +31,12 @@ public:
 
 	void get_year(void);
 
+	char* take_fio(void);
+
+	char* take_position(void);
+
+	int take_year(void);
+
 	worker();
 
 	worker(char* data_fio, char* data_position, int data_year);
@@ -45,18 +51,11 @@ public:
 
 	friend istream& operator>>(istream& stream, worker& obj);
 
-	char* take_fio(void);
-
-	char* take_position(void);
-
-	int take_year(void);
-
-	friend void sort(worker obj[]);
+	friend bool operator < (worker obj1, worker obj2);
 
 	friend void disp(worker obj[]);
 
 	friend void search(worker obj[]);
-
 
 
 };

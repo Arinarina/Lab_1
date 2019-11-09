@@ -6,7 +6,11 @@
 
 #include <stdio.h> 
 
+#include <cstring>
+
 #define N 10
+
+#define _CRT_SECURE_NO_WARNINGS 
 
 using namespace std;
 
@@ -15,7 +19,7 @@ void worker::set_fio(char* data)
 
 {
 
-	long int size = dlina(data);
+	long int size = strlen(data);
 
 	delete[] fio;
 
@@ -23,7 +27,7 @@ void worker::set_fio(char* data)
 
 	fio = new char[size + 1];
 
-	copy(fio, data);
+	strcpy(fio, data);
 
 	return;
 
@@ -33,7 +37,7 @@ void worker::set_position(char* data)
 
 {
 
-	long int size = dlina(data);
+	long int size = strlen(data);
 
 	delete[] position;
 
@@ -41,7 +45,7 @@ void worker::set_position(char* data)
 
 	position = new char[size + 1];
 
-	copy(position, data);
+	strcpy(position, data);
 
 	return;
 
@@ -141,13 +145,13 @@ istream& operator>>(istream& stream, worker& obj)
 		gets_s(str);
 
 
-		if (test_stroka(str) == false)
+		/*if (test_stroka(str) == false)
 		{
 			cout << "\nНеккоректно введены данные!Для продолжения нажмите любую кнопку.\n";
 			_getch();
 			system("cls");
 			continue;
-		}
+		}*/
 		break;
 	}
 	obj.set_fio(str);
@@ -161,13 +165,13 @@ istream& operator>>(istream& stream, worker& obj)
 		gets_s(str);
 
 
-		if (test_stroka(str) == false)
+		/*if (test_stroka(str) == false)
 		{
 			cout << "\nНеккоректно введены данные!Для продолжения нажмите любую кнопку.\n";
 			_getch();
 			system("cls");
 			continue;
-		}
+		}*/
 		break;
 	}
 	obj.set_position(str);
@@ -193,6 +197,7 @@ istream& operator>>(istream& stream, worker& obj)
 
 }
 
+
 ostream& operator<<(ostream& stream, worker& obj)
 {
 	obj.get_fio();
@@ -200,6 +205,15 @@ ostream& operator<<(ostream& stream, worker& obj)
 	obj.get_year();
 	return stream;
 }
+
+bool operator < (worker obj1, worker obj2) {
+	if ((strcmp(obj2.take_fio(), obj1.take_fio()) > 0) && (strcmp(obj2.take_position(), " ") != 0) && (strcmp(obj1.take_position(), " ") != 0))
+		return true;
+	else
+		return false;
+
+}
+
 
 char* worker::take_fio(void)
 {
@@ -225,12 +239,12 @@ worker::worker(const worker& src)
 		position = NULL;
 	}
 
-	long int size = dlina(src.fio);
+	long int size = strlen(src.fio);
 	fio = new char[size + 1];
-	copy(fio, src.fio);
-	size = dlina(src.position);
+	strcpy(fio, src.fio);
+	size = strlen(src.position);
 	position = new char[size + 1];
-	copy(position, src.position);
+	strcpy(position, src.position);
 	year = src.year;
 }
 
@@ -248,12 +262,12 @@ worker& worker::operator=(const worker& src)
 		position = NULL;
 	}
 
-	long int size = dlina(src.fio);
+	long int size = strlen(src.fio);
 	fio = new char[size + 1];
-	copy(fio, src.fio);
-	size = dlina(src.position);
+	strcpy(fio, src.fio);
+	size = strlen(src.position);
 	position = new char[size + 1];
-	copy(position, src.position);
+	strcpy(position, src.position);
 	year = src.year;
 	return *this;
 }
@@ -265,14 +279,14 @@ int worker::take_year(void)
 
 worker::worker(char* data_fio, char* data_position, int data_year)
 {
-	long int size = dlina(data_fio);
+	long int size = strlen(data_fio);
 	fio = NULL;
 	fio = new char[size + 1];
-	copy(fio, data_fio);
-	size = dlina(data_position);
+	strcpy(fio, data_fio);
+	size = strlen(data_position);
 	position = NULL;
 	position = new char[size + 1];
-	copy(position, data_position);
+	strcpy(position, data_position);
 	year = data_year;
 }
 void disp(worker obj[])
